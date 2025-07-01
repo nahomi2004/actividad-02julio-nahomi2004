@@ -9,6 +9,8 @@ from . import views
 
 urlpatterns = [
         path('', views.index, name='index'),
+        path('telefonos', views.listar_telefonos, 
+            name='listadoTelefonos'),
         path('estudiante/<int:id>', views.obtener_estudiante, 
             name='obtener_estudiante'),
         path('crear/estudiante', views.crear_estudiante, 

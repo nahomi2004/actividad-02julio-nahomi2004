@@ -27,6 +27,10 @@ def index(request):
     informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
     return render(request, 'index.html', informacion_template)
 
+def listar_telefonos(request):
+    telefonos = NumeroTelefonico.objects.all()
+    informacion_template = {'telefonos': telefonos, 'numero_telefonos': len(telefonos)}
+    return render(request, 'listadoTelefonos.html', informacion_template)
 
 def obtener_estudiante(request, id):
     """
