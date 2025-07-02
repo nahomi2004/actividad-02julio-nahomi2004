@@ -119,9 +119,10 @@ button {
 }
 
 a {
-  display: inline-block;
+  display: flex !important;
   color: var(--primary-color);
   text-decoration: none;
+  align-items: center;
 }
 
 a:hover {

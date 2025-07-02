@@ -9,9 +9,9 @@
 <hr>
 <h3>Número de Modulos {{ numero_modulos }}</h3>
 <hr>
-[<a href="{% url 'index' %}">Inicio</a>]
+<a href="{% url 'index' %}" class="btn custom-btn">Inicio</a>
 <hr>
-<table border="1px">
+<table id="tabla_datos" class="cell-border">
   <tr>
     <th><b>Nombre Modulo</b></th>
     <th><b>Valor Matriculas</b></th>
@@ -24,16 +24,15 @@
     <td>
       {{e.valor_matriculas}}
     </td>
-    <td>
-      [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
-      [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
-    </td>
   </tr>
   {% endfor %}
 
 </table>
 <hr>
 
+{% endblock %}
+
+{% block scripts %}
 <script type="text/javascript">
   $(document).ready( function () {
     $('#tabla_datos').DataTable();

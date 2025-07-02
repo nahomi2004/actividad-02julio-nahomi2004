@@ -10,8 +10,9 @@
 <form action="" method="post">
   {% csrf_token %}
   {{formulario.as_p}}
-  <p><input type='submit' value='Agregar'/></p>
+  <!--p><input type='submit' value='Agregar'/></p-->
+  <button type="submit" class="btn custom-btn">Agregar</button>
 </form>
-
-[<a href="{% url 'index' %}">inicio</a>]
+<br>
+<a href="{% url 'index' %}" class="btn custom-btn">Inicio</a>
 {% endblock %}

@@ -9,9 +9,9 @@
 <hr>
 <h3>Número de Modulos {{ numero_estudiantes }}</h3>
 <hr>
-[<a href="{% url 'index' %}">Inicio</a>]
+<a href="{% url 'index' %}" class="btn custom-btn">Inicio</a>
 <hr>
-<table border="1px">
+<table id="tabla_datos" class="cell-border">
   <tr>
     <th><b>Nombre</b></th>
     <th><b>Apellido</b></th>
@@ -19,7 +19,8 @@
     <th><b>Edad</b></th>
     <th><b>Tipo Estudiante</b></th>
     <th><b>Matriculas</b></th>
-    <th><b>Costo Matriculas Total</b></th>
+    <th><b>Costo Matriculas</b></th>
+    <th><b>Total</b></th>
   </tr>
   {% for e in estudiantes %}
   <tr>
@@ -55,7 +56,9 @@
 
 </table>
 <hr>
+{% endblock %}
 
+{% block scripts %}
 <script type="text/javascript">
   $(document).ready( function () {
     $('#tabla_datos').DataTable();
