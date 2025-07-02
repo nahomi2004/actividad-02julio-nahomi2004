@@ -9,35 +9,46 @@
 <hr>
 <h3>Número de Matriculas {{ numero_matriculas }}</h3>
 <hr>
-[<a href="{% url 'crear_matricula' %}">nuevo</a>]
+<a class= "custom-btn" href="{% url 'crear_matricula' %}"> Crear </a>
 <hr>
-<table border="1px">
-  <tr>
-    <th><b>Estudiante</b></th>
-    <th><b>Módulo</b></th>
-    <th><b>Comentario</b></th>
-    <th><b>Opciones</b></th>
-  </tr>
-  {% for e in matriculas %}
-  <tr>
-    <td>
-      {{e.estudiante.nombre}} <br>
-      {{e.estudiante.get_tipo_estudiante_display }}
-      [<a href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>]
-    </td>
-    <td>
-      {{e.modulo.nombre}}
-    </td>
-    <td>
-      {{e.comentario}}
-    </td>
-    <td>
-      [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
-      [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
-    </td>
-  </tr>
-  {% endfor %}
-
+<table id="tabla_datos" class="cell-border">
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Módulo</th>
+      <th>Comentario</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for e in matriculas %}
+    <tr>
+      <td>
+        {{e.estudiante.nombre}} <br>
+        {{e.estudiante.get_tipo_estudiante_display }}
+        <a class="custom-btn" href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>
+      </td>
+      <td>
+        {{e.modulo.nombre}}
+      </td>
+      <td>
+        {{e.comentario}}
+      </td>
+      <td>
+        <a class="custom-btn" href="{% url 'detalle_matricula' e.id %}"> Ver </a>
+        <a class="custom-btn" href="{% url 'editar_matricula' e.id %}">editar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 <hr>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
 {% endblock %}

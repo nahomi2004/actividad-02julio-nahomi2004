@@ -1,16 +1,22 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Listado de Matriculas
+  Detalle de Matrícula
 {% endblock %}
 
 {% block content %}
-<h3>Detalle de Matricula</h3>
+<h3 class="mb-4">Detalle de Matrícula</h3>
+<hr>
 
-<b>Nombre:</b> {{matricula.estudiante}}
-</br>
-<b>Modulo:</b> {{matricula.modulo}}
+<p class="lead"><b>Estudiante:</b> {{ matricula.estudiante }}</p>
+<p class="lead"><b>Módulo:</b> {{ matricula.modulo }}</p>
+<p class="lead"><b>Comentario:</b> {{ matricula.comentario|default:"No se agregaron comentarios." }}</p>
 
-</br>
-[<a href="{% url 'index' %}">inicio</a>]
+<hr>
+
+<div class="d-flex justify-content-between mt-4">
+  <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn">Volver al Listado</a>
+  <a href="{% url 'editar_matricula' matricula.id %}" class="btn custom-btn">Editar Matrícula</a>
+</div>
+
 {% endblock %}

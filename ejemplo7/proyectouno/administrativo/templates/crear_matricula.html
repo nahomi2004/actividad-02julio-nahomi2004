@@ -1,17 +1,19 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Listado de Matriculas
+  Crear Nueva Matrícula
 {% endblock %}
 
 {% block content %}
-<h2>Crear Matricula</h2>
-
+<h2 class="mb-4">Crear Nueva Matrícula</h2>
+<hr>
 <form action="" method="post">
   {% csrf_token %}
   {{formulario.as_p}}
-  <p><input type='submit' value='Agregar'/></p>
+  <div class="d-flex justify-content-between mt-4">
+      <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn">Cancelar y Volver</a>
+      <button type="submit" class="btn custom-btn">Guardar Matrícula</button>
+    </div>
 </form>
 
-[<a href="{% url 'index' %}">inicio</a>]
 {% endblock %}
