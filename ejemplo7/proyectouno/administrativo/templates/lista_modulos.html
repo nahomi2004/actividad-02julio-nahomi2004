@@ -1,0 +1,42 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Modulos
+{% endblock %}
+
+{% block content %}
+<h1>{{mititulo}}</h1>
+<hr>
+<h3>Número de Modulos {{ numero_modulos }}</h3>
+<hr>
+[<a href="{% url 'index' %}">Inicio</a>]
+<hr>
+<table border="1px">
+  <tr>
+    <th><b>Nombre Modulo</b></th>
+    <th><b>Valor Matriculas</b></th>
+  </tr>
+  {% for e in modulos %}
+  <tr>
+    <td>
+      {{e.nombre}}
+    </td>
+    <td>
+      {{e.valor_matriculas}}
+    </td>
+    <td>
+      [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
+      [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
+    </td>
+  </tr>
+  {% endfor %}
+
+</table>
+<hr>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}

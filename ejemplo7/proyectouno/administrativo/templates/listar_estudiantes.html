@@ -1,0 +1,64 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Estudiantes
+{% endblock %}
+
+{% block content %}
+<h1>{{mititulo}}</h1>
+<hr>
+<h3>Número de Modulos {{ numero_estudiantes }}</h3>
+<hr>
+[<a href="{% url 'index' %}">Inicio</a>]
+<hr>
+<table border="1px">
+  <tr>
+    <th><b>Nombre</b></th>
+    <th><b>Apellido</b></th>
+    <th><b>Cedula</b></th>
+    <th><b>Edad</b></th>
+    <th><b>Tipo Estudiante</b></th>
+    <th><b>Matriculas</b></th>
+    <th><b>Costo Matriculas Total</b></th>
+  </tr>
+  {% for e in estudiantes %}
+  <tr>
+    <td>
+      {{e.nombre}}
+    </td>
+    <td>
+      {{e.apellido}}
+    </td>
+    <td>
+      {{e.cedula}}
+    </td>
+    <td>
+      {{e.apellido}}
+    </td>
+    <td>
+      {{e.edad}}
+    </td>
+    <td>
+      {{e.tipo_estudiante}}
+    </td>
+    <td>
+      {% for m in e.lasmatriculas.all %}
+        • {{ m.modulo }}<br>
+        &nbsp;&nbsp;Costo: ${{ m.costo }}<br><br>
+      {% empty %}
+        No tiene matrículas
+      {% endfor %}
+    </td>
+    <td>${{ e.obtener_costo_total }}</td>
+  </tr>
+  {% endfor %}
+
+</table>
+<hr>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}

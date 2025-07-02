@@ -4,8 +4,8 @@ from django.template import RequestContext
 from django.shortcuts import render
 
 # importar las clases de models.py
-from administrativo.models import Matricula, Estudiante
-from administrativo.forms import MatriculaForm, MatriculaEditForm
+from administrativo.models import Matricula, Estudiante, Modulo
+from administrativo.forms import MatriculaForm, MatriculaEditForm, ModuloForm, EstudianteForm
 
 # vista que permita presesentar las matriculas
 # el nombre de la vista es index.
@@ -87,3 +87,54 @@ def detalle_estudiante(request, id):
 
 # crear módulos
 # crear estudiantes
+
+# NUEVAS FUNCIONES
+def lista_modulos(request):
+    """
+    """
+    modulos = Modulo.objects.all()
+
+    titulo = "Listado de modulos"
+    informacion_template = {'modulos': modulos,
+    'numero_modulos': len(modulos), 'mititulo': titulo}
+    return render(request, 'lista_modulos.html', informacion_template)
+
+def listar_estudiantes(request):
+    """
+    """
+    estudiantes = Estudiante.objects.all()
+
+    titulo = "Listado de estudiantes"
+    informacion_template = {'estudiantes': estudiantes,
+    'numero_estudiantes': len(estudiantes), 'mititulo': titulo}
+    return render(request, 'listar_estudiantes.html', informacion_template)
+
+def crear_modulo(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = ModuloForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = ModuloForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crear_modulo.html', diccionario)
+
+def crear_estudiantes(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = EstudianteForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = EstudianteForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crear_estudiantes.html', diccionario)
