@@ -9,49 +9,55 @@
 <hr>
 <h3>Número de Modulos {{ numero_estudiantes }}</h3>
 <hr>
-<a href="{% url 'index' %}" class="btn custom-btn">Inicio</a>
+<a href="{% url 'crear_estudiantes' %}" class="btn custom-btn"><i class="bi bi-plus-circle-fill"></i> Crear</a>
 <hr>
 <table id="tabla_datos" class="cell-border">
-  <tr>
-    <th><b>Nombre</b></th>
-    <th><b>Apellido</b></th>
-    <th><b>Cedula</b></th>
-    <th><b>Edad</b></th>
-    <th><b>Tipo Estudiante</b></th>
-    <th><b>Matriculas</b></th>
-    <th><b>Costo Matriculas</b></th>
-    <th><b>Total</b></th>
-  </tr>
+  <thead>
+    <tr>
+      <th><b>Nombre</b></th>
+      <th><b>Apellido</b></th>
+      <th><b>Cedula</b></th>
+      <th><b>Edad</b></th>
+      <th><b>Tipo Estudiante</b></th>
+      <th><b>Matriculas</b></th>
+      <th><b>Costo Matriculas</b></th>
+      <th><b>Total</b></th>
+    </tr>
+  </thead>
+  
   {% for e in estudiantes %}
-  <tr>
-    <td>
-      {{e.nombre}}
-    </td>
-    <td>
-      {{e.apellido}}
-    </td>
-    <td>
-      {{e.cedula}}
-    </td>
-    <td>
-      {{e.apellido}}
-    </td>
-    <td>
-      {{e.edad}}
-    </td>
-    <td>
-      {{e.tipo_estudiante}}
-    </td>
-    <td>
-      {% for m in e.lasmatriculas.all %}
-        • {{ m.modulo }}<br>
-        &nbsp;&nbsp;Costo: ${{ m.costo }}<br><br>
-      {% empty %}
-        No tiene matrículas
-      {% endfor %}
-    </td>
-    <td>${{ e.obtener_costo_total }}</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>
+        {{e.nombre}}
+      </td>
+      <td>
+        {{e.apellido}}
+      </td>
+      <td>
+        {{e.cedula}}
+      </td>
+      <td>
+        {{e.apellido}}
+      </td>
+      <td>
+        {{e.edad}}
+      </td>
+      <td>
+        {{e.tipo_estudiante}}
+      </td>
+      <td>
+        {% for m in e.lasmatriculas.all %}
+          • {{ m.modulo }}<br>
+          &nbsp;&nbsp;Costo: ${{ m.costo }}<br><br>
+        {% empty %}
+          No tiene matrículas
+        {% endfor %}
+      </td>
+      <td>${{ e.obtener_costo_total }}</td>
+    </tr>
+  </tbody>
+  
   {% endfor %}
 
 </table>

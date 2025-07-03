@@ -37,22 +37,28 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a href="{% url 'index' %}" class="nav-link click-scroll">Home</a>
+                                <a href="{% url 'index' %}" class="nav-link">Home</a>
+                            </li>                            
+                            <li class="nav-item">
+                                <a href="{% url 'listar_estudiantes' %}" class="nav-link">Ver Estudiantes</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'crear_matricula' %}" class="nav-link click-scroll">Crear Matricula</a>
+                                <a href="{% url 'lista_modulos' %}" class="nav-link">Ver Modulos</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{% url 'crear_modulo' %}" class="nav-link click-scroll">Crear Modulo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'crear_estudiantes' %}" class="nav-link click-scroll">Crear Estudiante</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'listar_estudiantes' %}" class="nav-link click-scroll">Ver Estudiantes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'lista_modulos' %}" class="nav-link click-scroll">Ver Modulos</a>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Crear</a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li>
+                                        <a href="{% url 'crear_modulo' %}" class="dropdown-item">Crear Modulo</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'crear_matricula' %}" class="dropdown-item">Crear Matricula</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'crear_estudiantes' %}" class="dropdown-item">Crear Estudiante</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <!--div class="d-none d-lg-block">

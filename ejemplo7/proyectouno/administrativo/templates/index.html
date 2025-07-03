@@ -9,7 +9,7 @@
 <hr>
 <h3>Número de Matriculas {{ numero_matriculas }}</h3>
 <hr>
-<a class= "custom-btn" href="{% url 'crear_matricula' %}"> Crear </a>
+<a class= "custom-btn" href="{% url 'crear_matricula' %}"> <i class="bi bi-plus-circle-fill"></i> Crear </a>
 <hr>
 <table id="tabla_datos" class="cell-border">
   <thead>
@@ -26,7 +26,7 @@
       <td>
         {{e.estudiante.nombre}} <br>
         {{e.estudiante.get_tipo_estudiante_display }}
-        <a class="custom-btn" href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>
+        <a href="{% url 'detalle_estudiante' e.estudiante.id %}"><i class="bi bi-eye-fill"></i></a>
       </td>
       <td>
         {{e.modulo.nombre}}
@@ -35,8 +35,8 @@
         {{e.comentario}}
       </td>
       <td>
-        <a class="custom-btn" href="{% url 'detalle_matricula' e.id %}"> Ver </a>
-        <a class="custom-btn" href="{% url 'editar_matricula' e.id %}">editar</a>
+        <a href="{% url 'detalle_matricula' e.id %}"> <i class="bi bi-eye-fill"></i> Ver </a>
+        <a href="{% url 'editar_matricula' e.id %}"><i class="bi bi-pencil-fill"></i> Editar</a>
       </td>
     </tr>
     {% endfor %}

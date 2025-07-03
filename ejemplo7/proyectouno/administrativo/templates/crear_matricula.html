@@ -7,13 +7,44 @@
 {% block content %}
 <h2 class="mb-4">Crear Nueva Matrícula</h2>
 <hr>
-<form action="" method="post">
+
+<form action="" method="post" class="custom-form contact-form" role="form">
   {% csrf_token %}
-  {{formulario.as_p}}
+  
+  <div class="row g-3">
+      <div class="col-12">
+          <div class="form-floating">
+              {{ formulario.estudiante }}
+              <label for="{{ formulario.estudiante.id_for_label }}">{{ formulario.estudiante.label }}</label>
+          </div>
+      </div>
+
+      <div class="col-12">
+          <div class="form-floating">
+              {{ formulario.modulo }}
+              <label for="{{ formulario.modulo.id_for_label }}">{{ formulario.modulo.label }}</label>
+          </div>
+      </div>
+
+      <div class="col-12">
+          <div class="form-floating">
+              {{ formulario.comentario }}
+              <label for="{{ formulario.comentario.id_for_label }}">{{ formulario.comentario.label }}</label>
+          </div>
+      </div>
+        <div class="col-12">
+            <div class="form-floating">
+                {{ formulario.costo }}
+                <label for="{{ formulario.costo.id_for_label }}">{{ formulario.costo.label }}</label>
+            </div>
+        </div>
+      
+  </div>
+
   <div class="d-flex justify-content-between mt-4">
-      <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn">Cancelar y Volver</a>
+      <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn">Volver Listado Mas</a>
       <button type="submit" class="btn custom-btn">Guardar Matrícula</button>
-    </div>
+  </div>
 </form>
 
 {% endblock %}

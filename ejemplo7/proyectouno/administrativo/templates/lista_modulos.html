@@ -9,22 +9,28 @@
 <hr>
 <h3>Número de Modulos {{ numero_modulos }}</h3>
 <hr>
-<a href="{% url 'index' %}" class="btn custom-btn">Inicio</a>
+<a href="{% url 'crear_modulo' %}" class="btn custom-btn"><i class="bi bi-plus-circle-fill"></i> Crear</a>
 <hr>
 <table id="tabla_datos" class="cell-border">
-  <tr>
-    <th><b>Nombre Modulo</b></th>
-    <th><b>Valor Matriculas</b></th>
-  </tr>
+  <thead>
+    <tr>
+      <th><b>Nombre Modulo</b></th>
+      <th><b>Valor Matriculas</b></th>
+    </tr>
+  </thead>
+  
   {% for e in modulos %}
-  <tr>
-    <td>
-      {{e.nombre}}
-    </td>
-    <td>
-      {{e.valor_matriculas}}
-    </td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>
+        {{e.nombre}}
+      </td>
+      <td>
+        {{e.valor_matriculas}}
+      </td>
+    </tr>
+  </tbody>
+  
   {% endfor %}
 
 </table>

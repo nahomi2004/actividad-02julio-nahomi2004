@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Editar Matrícula
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Editar Matrícula</h2>
+
+<div class="mb-3">
+    <h6>Estudiante: <span class="fw-normal">{{ formulario.instance.estudiante.nombre }} {{ formulario.instance.estudiante.apellido }}</span></h6>
+    <h6>Módulo: <span class="fw-normal">{{ formulario.instance.modulo.get_nombre_display }}</span></h6>
+</div>
+<hr>
+
+<form action="" method="post" class="custom-form contact-form" role="form">
+  {% csrf_token %}
+
+  {{ formulario.as_p }}
+
+  <div class="d-flex justify-content-between mt-4">
+      <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn">Cancelar y Volver</a>
+      <button type="submit" class="btn custom-btn">Guardar Cambios</button>
+  </div>
+</form>
+
+{% endblock %}
